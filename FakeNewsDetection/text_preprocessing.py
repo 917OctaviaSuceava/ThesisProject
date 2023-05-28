@@ -108,6 +108,6 @@ def text_title_author():
     pickle.dump(Y2, open("D:\\ThesisProject\\FakeNewsDetection\\Y3.pickle", "wb"))
 
 
-text_only()
-text_author()
-text_title_author()
+# text_only()
+# text_author()
+# text_title_author()
