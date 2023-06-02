@@ -1,8 +1,12 @@
+from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier
 import pickle
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.model_selection import train_test_split
 import time
+from matplotlib import pyplot as plt
+from sklearn.tree import export_graphviz
+import pydotplus
 
 X_pkl = pickle.load(open("tfidf.pickle", "rb"))
 Y_pkl = pickle.load(open("Y1.pickle", "rb"))
@@ -57,13 +61,30 @@ def train(val):
         f1_scores.append(f1)
     if val == 1:
         pickle.dump(modelDT, open("DT1.pickle", "wb"))
+        # build_tree(modelDT, 1)
     elif val == 2:
         pickle.dump(modelDT1, open("DT2.pickle", "wb"))
+        # build_tree(modelDT1, 2)
     else:
         pickle.dump(modelDT2, open("DT3.pickle", "wb"))
+        # build_tree(modelDT2, 3)
 
     print("Average Accuracy:", sum(accuracies) / len(accuracies))
     print("Average Precision:", sum(precisions) / len(precisions))
     print("Average Recall:", sum(recalls) / len(recalls))
     print("Average F1-score:", sum(f1_scores) / len(f1_scores))
 
+
+def build_tree(model, x):
+    columns = ['id', 'title', 'author', 'text']
+    labels = ['0', '1']
+    file_to_save = "decision_tree_" + str(x) + ".png"
+    dot_data = export_graphviz(model, out_file=None, feature_names=columns, class_names=labels, filled=True,
+                               rounded=True)
+    graph = pydotplus.graph_from_dot_data(dot_data)
+    graph.write_png(file_to_save)
+
+
+
+def get_x_y():
+    return X, Y
