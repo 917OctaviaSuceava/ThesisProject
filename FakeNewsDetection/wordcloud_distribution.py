@@ -15,7 +15,7 @@ plt.show()
 
 plt.figure(figsize=(10, 10))
 plt.grid(None)
-news = " ".join(data["text"][data["label"] == 1].astype(str))  # Convert to string and combine all text of fake news
+news = " ".join(data["text"][data["label"] == 1].astype(str))  # convert to string and combine all text of fake news
 WC = WordCloud(width=1000, height=500, max_words=500, min_font_size=5)
 news_words = WC.generate(news)
 plt.imshow(news_words, interpolation='bilinear')
@@ -24,7 +24,7 @@ plt.show()
 
 plt.figure(figsize=(10, 10))
 plt.grid(None)
-news = " ".join(data["text"][data["label"] == 0].astype(str))  # Convert to string and combine all text of real news
+news = " ".join(data["text"][data["label"] == 0].astype(str))  # convert to string and combine all text of real news
 WC = WordCloud(width=1000, height=500, max_words=500, min_font_size=5)
 news_words = WC.generate(news)
 plt.imshow(news_words, interpolation='bilinear')
