@@ -48,13 +48,14 @@ def text_only():
 
     # fit the vectorizer to the preprocessed data
     tfidf_vectorizer.fit(preprocessed_data)
+    pickle.dump(tfidf_vectorizer, open("tfidf_vectorizer.pickle", "wb"))
 
     # transform the preprocessed data into a TF-IDF matrix, only taking non-null entries
     tf_idf_matrix = tfidf_vectorizer.transform(preprocessed_data.dropna())
 
-    pickle.dump(tf_idf_matrix, open("tfidf.pickle", "wb"))
+    # pickle.dump(tf_idf_matrix, open("tfidf.pickle", "wb"))
     Y = data.label.values
-    pickle.dump(Y, open("D:\\ThesisProject\\FakeNewsDetection\\Y1.pickle", "wb"))
+    # pickle.dump(Y, open("D:\\ThesisProject\\FakeNewsDetection\\Y1.pickle", "wb"))
     print(Y)
     # return tf_idf_matrix, Y
 
@@ -73,13 +74,14 @@ def text_author():
 
     # fit the vectorizer to the preprocessed data
     tfidf_vectorizer.fit(preprocessed_data)
+    pickle.dump(tfidf_vectorizer, open("tfidf_vectorizer1.pickle", "wb"))
 
     # transform the preprocessed data into a TF-IDF matrix, only taking non-null entries
     tf_idf_matrix = tfidf_vectorizer.transform(preprocessed_data.dropna())
 
-    pickle.dump(tf_idf_matrix, open("tfidf1.pickle", "wb"))
+    # pickle.dump(tf_idf_matrix, open("tfidf1.pickle", "wb"))
     Y1 = data.label.values
-    pickle.dump(Y1, open("D:\\ThesisProject\\FakeNewsDetection\\Y2.pickle", "wb"))
+    # pickle.dump(Y1, open("D:\\ThesisProject\\FakeNewsDetection\\Y2.pickle", "wb"))
 
 
 def text_title_author():
@@ -99,15 +101,11 @@ def text_title_author():
 
     # fit the vectorizer to the preprocessed data
     tfidf_vectorizer.fit(preprocessed_data)
+    pickle.dump(tfidf_vectorizer, open("tfidf_vectorizer2.pickle", "wb"))
 
     # transform the preprocessed data into a TF-IDF matrix, only taking non-null entries
     tf_idf_matrix = tfidf_vectorizer.transform(preprocessed_data.dropna())
 
-    pickle.dump(tf_idf_matrix, open("tfidf2.pickle", "wb"))
+    # pickle.dump(tf_idf_matrix, open("tfidf2.pickle", "wb"))
     Y2 = data.label.values
-    pickle.dump(Y2, open("D:\\ThesisProject\\FakeNewsDetection\\Y3.pickle", "wb"))
-
-
-# text_only()
-# text_author()
-# text_title_author()
+    # pickle.dump(Y2, open("D:\\ThesisProject\\FakeNewsDetection\\Y3.pickle", "wb"))
